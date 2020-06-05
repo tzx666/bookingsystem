@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.buct.bookticket.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_navigation_home_to_ticketInfo"
+            app:destination="@id/ticketInfo" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.buct.bookticket.ui.Ad.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.buct.bookticket.ui.User.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" >
+        <action
+            android:id="@+id/action_navigation_notifications_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_navigation_notifications_to_about"
+            app:destination="@id/about" />
+        <action
+            android:id="@+id/action_navigation_notifications_to_itemFragment"
+            app:destination="@id/itemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.buct.bookticket.ui.userfragments.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_register"
+            app:destination="@id/register" />
+        <action
+            android:id="@+id/action_loginFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/register"
+        android:name="com.buct.bookticket.ui.userfragments.Register"
+        android:label="register_fragment"
+        tools:layout="@layout/register_fragment" >
+        <action
+            android:id="@+id/action_register_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showTicketInfo"
+        android:name="com.buct.bookticket.ui.home.ShowTicketInfo"
+        android:label="show_ticket_info_fragment"
+        tools:layout="@layout/show_ticket_info_fragment" >
+        <argument
+            android:name="data"
+            app:argType="com.buct.bookticket.util.scheduleData" />
+        <action
+            android:id="@+id/action_showTicketInfo_to_confirmTicket"
+            app:destination="@id/confirmTicket" />
+    </fragment>
+    <fragment
+        android:id="@+id/ticketInfo"
+        android:name="com.buct.bookticket.ui.home.TicketInfo"
+        android:label="ticket_info_fragment"
+        tools:layout="@layout/ticket_info_fragment" >
+        <action
+            android:id="@+id/action_ticketInfo_to_showTicketInfo"
+            app:destination="@id/showTicketInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/about"
+        android:name="com.buct.bookticket.ui.userfragments.about"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/confirmTicket"
+        android:name="com.buct.bookticket.ui.home.ConfirmTicket"
+        android:label="confirm_ticket_fragment"
+        tools:layout="@layout/confirm_ticket_fragment" >
+        <argument
+            android:name="data"
+            app:argType="com.buct.bookticket.util.scheduleData" />
+        <argument
+            android:name="type"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_confirmTicket_to_itemFragment"
+            app:destination="@id/itemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="com.buct.bookticket.ui.home.ItemFragment"
+        android:label="fragment_item_list"
+        tools:layout="@layout/fragment_item_list" />
+</navigation>
